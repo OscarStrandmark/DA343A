@@ -1,6 +1,6 @@
 package l01;
 
-public class DString implements DynamicString { // implementera metoderna i DynamicString - se lab
+public class DString implements DynamicString, Comparable<DString> { // implementera metoderna i DynamicString - se lab
 	private char[] text;
 	private int length = 0;
 	
@@ -90,17 +90,16 @@ public class DString implements DynamicString { // implementera metoderna i Dyna
 
 	@Override
 	public DynamicString delete(int index) {
-
 		char[] newText = new char[text.length-1];
-		
-		int counter = 0;
+	
+		int count = 0;
 		for (int i = 0; i < text.length; i++) {
-			if(i != index) {
-				newText[counter] = text[i];
-				counter++;
+			if ( i != index ) {
+				newText[count] = text[i];
+				count++;
 			}
 		}
-		text = newText;
+		text = newText.clone();
 		return this;
 	}
 
@@ -141,8 +140,45 @@ public class DString implements DynamicString { // implementera metoderna i Dyna
 	
 	public boolean equals(Object o) {
 		
+		if(o instanceof DString) {
+			for (int i = 0; i < text.length; i++) {
+				if(text[i] != ((DString) o).charAt(i)) {
+					return false;
+				}
+				return true;
+			}
+		} else {
+			return false;
+		}
+		return false;		
+	}
+	
+	public void reverse() {
 		
+		char[] reverseText = new char[text.length];
 		
-		return null;
+		for (int i = 0; i < text.length; i++) {
+			reverseText[i] = text[text.length-i-1];
+		}
+	}
+
+	@Override
+	public int compareTo(DString str) {
+		
+		int retVal = 0;
+		int length = Math.min(text.length, str.length);
+		
+		for (int i = 0; i < length && retVal == 0; i++) {
+			if(text[i] > str.charAt(i)) {
+				retVal = 1;
+			} else if (text[i] < str.charAt(i)) {
+				retVal = -1;
+			}
+		}
+		
+		if (retVal == 0) {
+			retVal = text.length - str.length;
+		}
+		return retVal;
 	}
 }

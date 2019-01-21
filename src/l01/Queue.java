@@ -6,7 +6,7 @@ public interface Queue<T> {
 	
 	T remove();
 	
-	T element(T obj);
+	T element();
 	
 	boolean isEmpty();
 	

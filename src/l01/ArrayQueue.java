@@ -1,41 +1,40 @@
 package l01;
 
+import java.util.ArrayList;
+
 public class ArrayQueue<T> implements Queue<T> {
 
+	private ArrayList<T> queue;
 	
 	public ArrayQueue(){
-		
-		
+		queue = new ArrayList<T>();
 	}
 	
 	@Override
 	public void add(T obj) {
-		// TODO Auto-generated method stub
-		
+		queue.add(obj);
 	}
 
 	@Override
 	public T remove() {
-		// TODO Auto-generated method stub
-		return null;
+		T retVal = queue.get(0);
+		queue.remove(0);
+		return retVal;
 	}
 
 	@Override
-	public T element(T obj) {
-		// TODO Auto-generated method stub
-		return null;
+	public T element() {
+		return queue.get(0);
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return queue.isEmpty();
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return queue.size();
 	}
 	
 }
