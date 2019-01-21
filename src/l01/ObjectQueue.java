@@ -29,10 +29,7 @@ public class ObjectQueue {
     }
     
     public Object element() {
-        if( size==0 ) {
-            throw new QueueException("peek: Queue is empty");
-        }
-        return elements[ 0 ];
+        return elements[0];
     }
     
     public boolean isEmpty() {

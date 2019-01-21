@@ -33,11 +33,13 @@ public class DString implements DynamicString { // implementera metoderna i Dyna
 		text = newArr;
 	}
 	
-	public void append(char chr) {
+	public DynamicString append(char chr) {
 		if(length==text.length) {
 			grow();
 		}
 		text[length++] = chr;
+		
+		return this;
 	}
 
 	@Override
@@ -51,7 +53,7 @@ public class DString implements DynamicString { // implementera metoderna i Dyna
 	}
 
 	@Override
-	public void append(DString str) {
+	public DynamicString append(DString str) {
 		char[] newText = new char[text.length + str.length];
 
 		for (int i = 0; i < text.length; i++) {
@@ -61,10 +63,11 @@ public class DString implements DynamicString { // implementera metoderna i Dyna
 		for (int i = 0; i < str.length; i++) {
 			newText[text.length] = str.charAt(i);
 		}
+		return this;
 	}
 
 	@Override
-	public void delete(int start, int end) {
+	public DynamicString delete(int start, int end) {
 
 		char[] newText = new char[text.length - (end - start)];
 		
@@ -81,10 +84,11 @@ public class DString implements DynamicString { // implementera metoderna i Dyna
 				counter++;
 			}
 		}
+		return this;
 	}
 
 	@Override
-	public void delete(int index) {
+	public DynamicString delete(int index) {
 
 		char[] newText = new char[text.length-1];
 		
@@ -96,6 +100,7 @@ public class DString implements DynamicString { // implementera metoderna i Dyna
 			}
 		}
 		text = newText;
+		return this;
 	}
 
 	@Override
@@ -131,5 +136,12 @@ public class DString implements DynamicString { // implementera metoderna i Dyna
 			}
 		}
 		return -1;
+	}
+	
+	public boolean equals(Object o) {
+		
+		
+		
+		return null;
 	}
 }

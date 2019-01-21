@@ -2,14 +2,14 @@ package l01;
 
 public interface DynamicString {
 	/**
-	 * Antal tecken i strÃ¤ngen
-	 * @return antal tecken i strÃ¤ngen
+	 * Antal tecken i strängen
+	 * @return antal tecken i strängen
 	 */
 	public int length();
 	
 	/**
-	 * Returnerar tecknet i angiven position i strÃ¤ngen
-	 * @param index positionen fÃ¶r tecknet som ska returneras
+	 * Returnerar tecknet i angiven position i strängen
+	 * @param index positionen för tecknet som ska returneras
 	 * @return tecknet i positionen
 	 */
 	public char charAt(int index);
@@ -21,52 +21,52 @@ public interface DynamicString {
 	public String toString();
 	
 	/**
-	 * LÃ¤gger till ett tecken sist i strÃ¤ngen
-	 * @param chr Tecknet som ska lÃ¤ggas till
+	 * Lägger till ett tecken sist i strängen
+	 * @param chr Tecknet som ska läggas till
 	 */
-	public void append(char chr);
+	public DynamicString append(char chr);
 	
 	/**
-	 * LÃ¤gger till tecknen i ett DString-objekt sist i strÃ¤ngen
-	 * @param str StrÃ¤ngen som ska lÃ¤ggas till
+	 * Lägger till tecknen i ett DString-objekt sist i strängen
+	 * @param str Strängen som ska läggas till
 	 */
-	public void append(DString str);
+	public DynamicString append(DString str);
 	
 	/**
-	 * Tar bort tecken ur strÃ¤ngen. Det fÃ¶rsta tecknet som tas bort Ã¤r i positionen start och 
+	 * Tar bort tecken ur strängen. Det första tecknet som tas bort är i positionen start och 
 	 * teckenen fram till positionen (end-1) tas bort
-	 * @param start Positionen dÃ¤r borttagningen startas
-	 * @param end Tecken tas bort fram till positionen end. Tecknet i positionen end Ã¤r kvar i strÃ¤ngen.
+	 * @param start Positionen där borttagningen startas
+	 * @param end Tecken tas bort fram till positionen end. Tecknet i positionen end är kvar i strängen.
 	 */
-	public void delete(int start, int end);
+	public DynamicString delete(int start, int end);
 	
 	/**
 	 * Tar bort tecknet i angiven position
-	 * @param index Positionen fÃ¶r tecknet som ska tas bort
+	 * @param index Positionen för tecknet som ska tas bort
 	 */
-	public void delete(int index);
+	public DynamicString delete(int index);
 	
 	/**
-	 * Returnerar ett String-objekt som bestÃ¥r av tecknen frÃ¥n positionen start till positionen (end-1)
-	 * @param start Positionen start ger det fÃ¶rsta tecknet i returstrÃ¤ngen
-	 * @param end Positionen (end-1) ger det sista tecknet i returstrÃ¤ngen
-	 * @return Ett String-objekt som innehÃ¥ller tecknen frÃ¥n positionen start till positionen (end-1)
+	 * Returnerar ett String-objekt som består av tecknen från positionen start till positionen (end-1)
+	 * @param start Positionen start ger det första tecknet i retursträngen
+	 * @param end Positionen (end-1) ger det sista tecknet i retursträngen
+	 * @return Ett String-objekt som innehåller tecknen från positionen start till positionen (end-1)
 	 */
 	public String substring(int start, int end);
 	
 	/**
-	 * Returnerar ett String-objekt som bestÃ¥r av tecknen frÃ¥n positionen start
-	 * @param start Positionen start ger det fÃ¶rsta tecknet i returstrÃ¤ngen
-	 * @return ett String-objekt som innehÃ¥ller tecknen fr.o.m. positionen start
+	 * Returnerar ett String-objekt som består av tecknen från positionen start
+	 * @param start Positionen start ger det första tecknet i retursträngen
+	 * @return ett String-objekt som innehåller tecknen fr.o.m. positionen start
 	 */
 	public String substring(int start);
 	
 	/**
-	 * Returnerar positionen fÃ¶r fÃ¶rsta fÃ¶rekomsten av tecknet chr. Om tecknet chr ej finns i strÃ¤ngen 
+	 * Returnerar positionen för första förekomsten av tecknet chr. Om tecknet chr ej finns i strängen 
 	 * returneras -1.
-	 * @param chr tecknet som metoden sÃ¶ker efter
-	 * @return positionen fÃ¶r fÃ¶rsta fÃ¶rekomsten av tecknet i strÃ¤ngen. Om tecknet ej finns i strÃ¤ngen 
-	 * sÃ¥ returneras -1. 
+	 * @param chr tecknet som metoden söker efter
+	 * @return positionen för första förekomsten av tecknet i strängen. Om tecknet ej finns i strängen 
+	 * så returneras -1. 
 	 */
 	public int indexOf(char chr);
 }
