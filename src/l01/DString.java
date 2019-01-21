@@ -8,6 +8,7 @@ public class DString implements DynamicString { // implementera metoderna i Dyna
 		this(10);
 	}
 	
+	
 	public DString(int size) {
 		size = (size<=0) ? 10 : size;
 		text = new char[size];

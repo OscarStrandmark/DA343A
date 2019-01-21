@@ -20,5 +20,6 @@ public class test_Dstring {
 		//test av substring(start,end)
 		System.out.println(dstr.substring(2, 7));
 		
+		
 	}
 }

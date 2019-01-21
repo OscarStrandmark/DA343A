@@ -5,6 +5,7 @@ public class ArrayQueue<T> implements Queue<T> {
 	
 	public ArrayQueue(){
 		
+		
 	}
 	
 	@Override
