@@ -95,6 +95,7 @@ public class DString implements DynamicString { // implementera metoderna i Dyna
 				counter++;
 			}
 		}
+		text = newText;
 	}
 
 	@Override
