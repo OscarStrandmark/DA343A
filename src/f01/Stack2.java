@@ -1,4 +1,4 @@
-package F01;
+package f01;
 
 public interface Stack2 {
     public void push(Object element);

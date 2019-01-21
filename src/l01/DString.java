@@ -1,4 +1,4 @@
-package L01;
+package l01;
 
 public class DString implements DynamicString { // implementera metoderna i DynamicString - se lab
 	private char[] text;
@@ -42,49 +42,93 @@ public class DString implements DynamicString { // implementera metoderna i Dyna
 
 	@Override
 	public int length() {
-		// TODO Auto-generated method stub
-		return 0;
+		return text.length;
 	}
 
 	@Override
 	public char charAt(int index) {
-		// TODO Auto-generated method stub
-		return 0;
+		return text[index];
 	}
 
 	@Override
 	public void append(DString str) {
-		// TODO Auto-generated method stub
+		char[] newText = new char[text.length + str.length];
+
+		for (int i = 0; i < text.length; i++) {
+			newText[i] = text[i];
+		}
 		
+		for (int i = 0; i < str.length; i++) {
+			newText[text.length] = str.charAt(i);
+		}
 	}
 
 	@Override
 	public void delete(int start, int end) {
-		// TODO Auto-generated method stub
+
+		char[] newText = new char[text.length - (end - start)];
 		
+		for (int i = 0; i < text.length; i++) {
+			if(i >= start && i <= start) {
+				text[i] = (char) -1;
+			}
+		}
+		
+		int counter = 0;
+		for (int i = 0; i < text.length; i++) {
+			if (text[i] != -1) {
+				newText[counter] = text[i];
+				counter++;
+			}
+		}
 	}
 
 	@Override
 	public void delete(int index) {
-		// TODO Auto-generated method stub
+
+		char[] newText = new char[text.length-1];
 		
+		int counter = 0;
+		for (int i = 0; i < text.length; i++) {
+			if(i != index) {
+				newText[counter] = text[i];
+				counter++;
+			}
+		}
 	}
 
 	@Override
 	public String substring(int start, int end) {
-		// TODO Auto-generated method stub
-		return null;
+
+		String ret = "";
+		
+		for (int i = 0; i < text.length; i++) {
+			if(i >= start && i <= end) {
+				ret += text[i];
+			}
+		}
+		return ret;
 	}
 
 	@Override
 	public String substring(int start) {
-		// TODO Auto-generated method stub
-		return null;
+
+		String ret = "";
+		
+		for (int i = start; i < text.length; i++) {
+			ret += text[i];
+		}
+		return ret;
 	}
 
 	@Override
 	public int indexOf(char chr) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		for (int i = 0; i < text.length; i++) {
+			if(text[i] == chr) {
+				return i;
+			}
+		}
+		return -1;
 	}
 }

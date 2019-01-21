@@ -1,4 +1,4 @@
-package F01;
+package f01;
 
 public interface Stack1 {
     public void push(Integer element);

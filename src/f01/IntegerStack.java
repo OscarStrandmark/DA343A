@@ -1,4 +1,4 @@
-package F01;
+package f01;
 import java.util.EmptyStackException;
 
 public class IntegerStack implements Stack1 {

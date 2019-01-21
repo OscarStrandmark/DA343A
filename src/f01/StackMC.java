@@ -1,11 +1,12 @@
-package F01;
+package f01;
 
-public interface Stack<T> {
+public interface StackMC<T> {
     /**
      * Placerar ett element i stacken.
      * @param element elementet att lägga på stacken
+     * @return referens till stack-implementeringen
      */
-    public void push(T element);
+    public StackMC<T> push(T element);
     
     /**
      * Returnerar det element som senast placerades i stacken. Elementet tas bort från stacken.

@@ -1,4 +1,4 @@
-package L01;
+package l01;
 
 public class QueueException extends RuntimeException {
     public QueueException() {}

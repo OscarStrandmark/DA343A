@@ -1,4 +1,4 @@
-package F01;
+package f01;
 import java.util.LinkedList;
 
 public class QueueEx {

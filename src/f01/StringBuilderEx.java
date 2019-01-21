@@ -1,4 +1,4 @@
-package F01;
+package f01;
 
 public class StringBuilderEx {
 	public void action() {
