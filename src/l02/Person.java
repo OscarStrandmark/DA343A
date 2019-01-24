@@ -1,6 +1,6 @@
 package l02;
 
-public class Person {
+public class Person implements Comparable<Person> {
     private String id;
     private String firstName;
     private String lastName;
@@ -35,7 +35,25 @@ public class Person {
         this.lastName = lastName;
     }
     
+    @Override
+    public boolean equals(Object obj) {
+    	if(obj instanceof Person && !(obj == null)) {
+    		if(id == ((Person) obj).getId()) {
+    			return true;
+    		} else {
+    			return false;
+    		}
+    	} else {
+    		return false;
+    	}
+    }
+    
     public String toString() {
         return id + " " + firstName + " " + lastName;
-    }    
+    }
+
+	@Override
+	public int compareTo(Person p) {
+		return p.getId().compareTo(this.getId());
+	} 
 }

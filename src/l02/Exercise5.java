@@ -21,7 +21,7 @@ public class Exercise5 {
             }
             br.close();
         } catch( IOException e ) {
-            System.out.println( "lÃ¤sPersoner: " + e );
+            System.out.println( "läsPersoner: " + e );
         }
         return map;
     }
@@ -38,19 +38,19 @@ public class Exercise5 {
     }
     
     public static void main( String[] args ) {
-        HashMap<String,Population> population = Exercise5.readPopulation( "files/befolkning.txt" );
-        Population pop1 = new Population( "Ladonia", 0 ); // Land pÃ¥ nordsidan av Kullaberg
-        Exercise5.info( population ); // H
+        HashMap<String,Population> population = Exercise5.readPopulation( "C:\\Users\\oscar\\git\\DA343A\\src\\l02\\files\\befolkning.txt" );
+        Population pop1 = new Population( "Ladonia", 0 ); // Land på nordsidan av Kullaberg
+        Exercise5.info( population ); // H - Skriver ut alla objekt i HashMap
         
-        System.out.println( population.toString() ); // A
-        System.out.println( population.size() ); // B
-        System.out.println( population.get( "Liberia" ) ); // C
-        System.out.println( population.containsKey( "Sweden" ) ); // D
+        System.out.println( population.toString() ); // A - Returnerar alla objekt i HashMap som en string, mellan måsvingar.
+        System.out.println( population.size() ); // B - Returnerar antal objekt som förvaras i HashMap
+        System.out.println( population.get( "Liberia" ) ); // C - Hämtar värdet från angiven key.
+        System.out.println( population.containsKey( "Sweden" ) ); // D - Kontrollerar om HashMap innehåller nyckel i parameter.
         System.out.println( population.containsKey( "Sverige" ) );
-        population.put( "Ladonia", pop1 ); // E
+        population.put( "Ladonia", pop1 ); // E - Lägger till objekt i HashMap
         System.out.println( population.toString() );
-        System.out.println( population.remove( "Sverige" ) ); // F
-        population.clear(); // G
+        System.out.println( population.remove( "Sverige" ) ); // F - Tar bort objektet med nyckeln i parametern.
+        population.clear(); // G - Tar bort alla objekt i HashMap
         System.out.println( population.toString() );
     }
 }

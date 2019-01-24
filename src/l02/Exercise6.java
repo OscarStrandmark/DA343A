@@ -45,12 +45,24 @@ public class Exercise6 {
     }
     
     public void translate() {
+    	String eng = JOptionPane.showInputDialog("Ange ett engelskt ord");
+    	String sve = dictonary.get("input");
+    	
+    	if(sve == null) {
+    		JOptionPane.showMessageDialog(null, eng + " finns inte i ordlistan");
+    	} else {
+    		JOptionPane.showMessageDialog(null, sve + " = " + eng);
+    	}
     }
+    
+    public String translate(String str) {
+		return dictonary.get(str);
+	}
 
     public static int menu(String[] options) {
         int res = 0;
         String input;
-        String message = "VÃ„LJ ETT ALTERNATIV\n";
+        String message = "VÄLJ ETT ALTERNATIV\n";
         for (int i = 0; i < options.length; i++) {
             message += "\n" + (i + 1) + ". " + options[i];
         }
@@ -70,8 +82,8 @@ public class Exercise6 {
     }
 
     public static void main(String[] args) {
-        Exercise6 ex6 = new Exercise6("files/SkSvEn.txt");
-        String[] menuOptions = {"Ã–versÃ¤tt ord", "Skriv ut ordlista"};
+        Exercise6 ex6 = new Exercise6("C:\\Users\\oscar\\git\\DA343A\\src\\l02\\files\\SkSvEn.txt");
+        String[] menuOptions = {"Översätt ord", "Skriv ut ordlista"};
         int choice = Exercise6.menu(menuOptions);
         while (choice != 0) {
             switch (choice) {

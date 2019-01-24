@@ -1,12 +1,12 @@
-package l02;
+	package l02;
 
 import java.util.Collection;
 import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import f2.LinkedStack;
-import laboration1.QueueException;
+import f02.LinkedStack;
+import l01.QueueException;
 
 public class LinkedQueue<T> implements Queue<T> {
 	private LinkedList<T> queue = new LinkedList<T>();
