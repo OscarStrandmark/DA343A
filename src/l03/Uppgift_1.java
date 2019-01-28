@@ -2,36 +2,31 @@ package l03;
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import javax.swing.JOptionPane;
 
 public class Uppgift_1 {
 
-	private static FileInputStream inputStream;
-	
-	public static void main(String[] args) {
+	private static String filename = "C:\\Users\\oscar\\git\\DA343A\\src\\l03\\files\\heltal.dat";
 
-		try {
-			inputStream = new FileInputStream("C:\\Users\\oscar\\git\\DA343A\\src\\l03\\files\\heltal.dat");
-		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "Filen kunde inte hittas");
-			e.printStackTrace();
-		}
-		
-		DataInputStream data = new DataInputStream(inputStream);
-		try {
-			while(data.available() > 10) {
-				try {
-					System.out.println(data.readInt());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+	public void sum(String filename) throws IOException {
+		try (DataInputStream dis = new DataInputStream(new FileInputStream(filename))) {
+			int sum = 0;
+			int n = dis.readInt();
+			System.out.println(n + ":");
+
+			for (int i = 0; i < n; i++) {
+				System.out.println(sum += dis.readInt());
 			}
+			dis.close();
+			System.out.println("Summan är: " + sum);
+		}
+	}
+
+	public static void main(String[] args) {
+		Uppgift_1 u1 = new Uppgift_1();
+		try {
+			u1.sum(filename);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
