@@ -29,11 +29,11 @@ public class WriteToFile {
         int choice;
         String menu = "\nMENY\n" +
                 "1. Skriv personer\n" +
-                "2. LÃ¤s personer\n" +
+                "2. Läs personer\n" +
                 "3. Skriv bjudna\n" +
-                "4. LÃ¤s bjudna\n" +
+                "4. Läs bjudna\n" +
                 "5. Skriv primtal\n" +
-                "6. LÃ¤s primtal\n" +
+                "6. Läs primtal\n" +
                 "7. Avsluta\n\n" +
                 "Ange val";
         
