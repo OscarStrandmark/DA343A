@@ -33,8 +33,8 @@ public class DemoDataStream1 implements StringIO {
 	@Override
 	public String read() {
 		String str = null;
-//	    fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Data files","dat")); // l√§gger till ett filter i filterlistan
-//	    fileChooser.setFileFilter(new FileNameExtensionFilter("Data files","dat")); // l√§gger till filtret och s√§tter det till aktuellt filter
+//	    fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Data files","dat")); // l‰gger till ett filter i filterlistan
+//	    fileChooser.setFileFilter(new FileNameExtensionFilter("Data files","dat")); // l‰gger till filtret och s‰tter det till aktuellt filter
         if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
         	try (DataInputStream dis = new DataInputStream(
         			new BufferedInputStream(
@@ -44,9 +44,9 @@ public class DemoDataStream1 implements StringIO {
         		String txt = dis.readUTF();
         		
         		if(longStr) {
-        			str = "En l√•ng str√§ng, ";
+        			str = "En lÂng str‰ng, ";
         		} else {
-        			str = "En kort str√§ng, ";
+        			str = "En kort str‰ng, ";
         		}
         		str = str + len + " tecken i String-objektet\n";
         		str = str + txt;
