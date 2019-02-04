@@ -38,8 +38,7 @@ public class Uppgift_3 extends Thread {
 			public void run() {
 				JFrame frame = new JFrame();
 				JLabel lblText = new JLabel();
-				String[] texter = { "Det är två månader kvar på året", "23 * 6735 = 154905",
-						"Den 28 oktober har Simone namnsdag" };
+				String[] texter = { "Det är två månader kvar på året", "23 * 6735 = 154905", "Den 28 oktober har Simone namnsdag" };
 				lblText.setPreferredSize(new Dimension(400, 40));
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.add(lblText);
