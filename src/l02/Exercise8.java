@@ -7,7 +7,7 @@ public class Exercise8 {
         Exercise6 e6 = new Exercise6("C:\\Users\\oscar\\git\\DA343A\\src\\l02\\files\\SkSvEn.txt");
 		Exercise7 e7 = new Exercise7("C:\\Users\\oscar\\git\\DA343A\\src\\l02\\files\\SkSvEn.txt");
 
-		String menuText = "Välj ett alternativ. \n \n0. Avsluta\n1. Översätt ett ord";
+		String menuText = "VÃ¤lj ett alternativ. \n \n0. Avsluta\n1. Ã¶versÃ¤tt ett ord";
 		
 		while(true) {
 			String choice = JOptionPane.showInputDialog(menuText);
@@ -23,12 +23,12 @@ public class Exercise8 {
 				System.exit(0);
 			}
 			if(res == 1) {
-				String response = JOptionPane.showInputDialog("Ange engelskt ord att översätta till skånska.");
-				String skå = e7.translate(e6.translate(response));
-				if(skå == null) {
+				String response = JOptionPane.showInputDialog("Ange engelskt ord att Ã¶versÃ¤tta till skÃ¥nska.");
+				String skÃ¶ = e7.translate(e6.translate(response));
+				if(skÃ¶ == null) {
 					JOptionPane.showMessageDialog(null, "Ordet finns inte i ordlistan");
 				} else {
-					JOptionPane.showMessageDialog(null, response + " = " + skå);
+					JOptionPane.showMessageDialog(null, response + " = " + skÃ¶);
 				}
 			}
 		}

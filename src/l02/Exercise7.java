@@ -19,13 +19,13 @@ public class Exercise7 {
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename),"ISO-8859-1"));
 			String[] parts;
-			String svenska, skånska;
+			String svenska, skÃ¥nska;
 			String str = br.readLine();
 			while (str != null) {
 				parts = str.split(",");
 				svenska = parts[1];
-				skånska = parts[0];
-				map.put(svenska, skånska);
+				skÃ¥nska = parts[0];
+				map.put(svenska, skÃ¥nska);
 				str = br.readLine();
 
 			}
@@ -64,7 +64,7 @@ public class Exercise7 {
 	public static int menu(String[] options) {
         int res = 0;
         String input;
-        String message = "VÄLJ ETT ALTERNATIV\n";
+        String message = "VÃ¤LJ ETT ALTERNATIV\n";
         for (int i = 0; i < options.length; i++) {
             message += "\n" + (i + 1) + ". " + options[i];
         }
@@ -84,7 +84,7 @@ public class Exercise7 {
 
 	public static void main(String[] args) {
 		Exercise7 ex7 = new Exercise7("C:\\Users\\oscar\\git\\DA343A\\src\\l02\\files\\SkSvEn.txt");
-		String[] menuOptions = { "Översätt ord", "Skriv ut ordlista" };
+		String[] menuOptions = { "Ã¶versÃ¤tt ord", "Skriv ut ordlista" };
 		int choice = Exercise7.menu(menuOptions);
 		while (choice != 0) {
 			switch (choice) {
