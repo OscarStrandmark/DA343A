@@ -1,6 +1,8 @@
 package l05.l5alarm;
 
-public class AlarmThreadA {
+import java.util.Observable;
+
+public class AlarmThreadA extends Observable {
 	private Thread thread;
 	private long ms;
 	
@@ -22,7 +24,8 @@ public class AlarmThreadA {
 			}catch(InterruptedException e) {
 				
 			}
-			System.out.println("Nu är det dags för alarm!");
+			setChanged();
+			notifyObservers();
 			thread = null;
 		}
 	}

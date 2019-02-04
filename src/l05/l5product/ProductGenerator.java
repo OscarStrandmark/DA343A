@@ -1,13 +1,25 @@
 package l05.l5product;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 public class ProductGenerator {
 	private Multiplication thread;
 	private int maxProduct;
+	private LinkedList<ProductListener> list = new LinkedList<ProductListener>();
 	
 	public ProductGenerator(int maxProduct) {
 		this.maxProduct = Math.abs(maxProduct);
+	}
+	
+	public void addListener(ProductListener pl) {
+		if(pl != null) {
+			list.add(pl);
+		}
+	}
+	
+	public void removeListener(ProductListener pl) {
+		list.remove(pl);
 	}
 	
 	public void start(int product) {
@@ -39,8 +51,10 @@ public class ProductGenerator {
 				factor1 = rand.nextInt(product)+1;
 				factor2 = rand.nextInt(product)+1;
 				res = factor1*factor2;
-				if(res==product) {
-					System.out.println(factor1+"*"+factor2+"="+product);
+				if(res==product ) {
+					for(ProductListener pl : list) {
+						pl.product(factor1 + " * " + factor2 + " = " + product);
+					}
 				}
 			}
 			thread=null;

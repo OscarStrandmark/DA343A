@@ -1,5 +1,8 @@
 package l05.l5product;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -13,6 +16,9 @@ public class Controller {
 		frame.add(productUI);
 		frame.pack();
 		frame.setVisible(true);
+		
+		productGenerator.addListener(new PListener());
+		productGenerator.addListener(new LogToFile("src\\l05\\l5product\\log"));
 	}
 		
 	public void start() {
@@ -34,6 +40,53 @@ public class Controller {
 		productGenerator.stop();
 	}
 	
+	private class LogToFile implements ProductListener {
+
+		private BufferedWriter writer;
+		private int rows = 0;
+		
+		public LogToFile(String filename) {
+			try {
+				writer = new BufferedWriter(new FileWriter(filename));
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		@Override
+		public void product(String msg) {
+			if (rows<10) {
+				try {
+					rows++;
+					writer.write(msg);
+					writer.newLine();
+					writer.flush();
+				} catch(Exception e) {
+					e.printStackTrace();
+				} 
+			} else {
+				productGenerator.removeListener(this);
+				try {
+					if(writer != null) {
+						writer.close();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	private class PListener implements ProductListener {
+		@Override
+		public void product(String msg) {
+			SwingUtilities.invokeLater(new Runnable() {
+				 public void run() {
+				 productUI.append(msg);
+				 }
+			 });
+		}
+	}
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
