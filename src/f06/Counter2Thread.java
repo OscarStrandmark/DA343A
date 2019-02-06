@@ -19,11 +19,11 @@ public class Counter2Thread extends Thread {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {}
-//        	synchronized(counter) {
+        	synchronized(this) {
         		counter.incCounter();
         		value = counter.getCounter();
-//        	}
-    	    System.out.println(getName()+": "+value);
+        	    System.out.println(getName()+": "+value);
+        	}
         }
     }
     

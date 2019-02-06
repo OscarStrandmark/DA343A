@@ -27,7 +27,7 @@ public class Concurrency {
 		return lbl.getBackground();
 	}
 	
-	public void changeColor() {
+	public synchronized void changeColor() {
 		c = colors[random.nextInt(colors.length)];
 		lbl.setBackground(c);
 	}
@@ -39,8 +39,10 @@ public class Concurrency {
 			Color color2;
 			while(notSame<10 && count<100000) {
 				count++;
-				color1 = getColor1();
-				color2 = getColor2();
+				synchronized (Concurrency.this) {
+					color1 = getColor1();
+					color2 = getColor2();
+				}
 				if(!color1.equals(color2)) {
 					notSame++;
 					System.out.println("count=" + count +": C1=" + color1 + "  C2=" + color2);
