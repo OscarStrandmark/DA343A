@@ -8,7 +8,7 @@ public class Main_U4b {
 		File file = new File("files/Material 6");
 		ZipArchive archive = new ZipArchive(file, buffer);
 		StringConsumer cons = new StringConsumer(buffer);
-		archive.zip();
+		//archive.zip();
 		cons.start();
 	}
 }
