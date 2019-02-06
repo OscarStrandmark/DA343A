@@ -13,13 +13,16 @@ import java.util.zip.ZipOutputStream;
 public class ZipArchive extends Thread {
 	private File file;
 	private String archive;
+	private StringBuffer buffer;
 	
-	public ZipArchive(String fileOrDir) {
-		this(new File(fileOrDir));
+	public ZipArchive(String fileOrDir, StringBuffer buffer) {
+		this(new File(fileOrDir), buffer);
+		this.buffer = buffer;
 	}
 	
-	public ZipArchive(File file) {
+	public ZipArchive(File file, StringBuffer buffer) {
 		this.file = file;
+		this.buffer = buffer;
 	}
 	
 	private String getFileName(String filename) {
@@ -32,7 +35,7 @@ public class ZipArchive extends Thread {
 	
 	private void zip(File file, ZipOutputStream zos, String directories) throws IOException {
 		if(file.isFile()) {
-			System.out.println("ZIP: " + file.getAbsolutePath());
+			buffer.put("ZIP: " + file.getAbsolutePath());
 			zos.putNextEntry(new ZipEntry(directories+file.getName()));
 			try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file))) {
 				int b = bis.read();
@@ -51,13 +54,13 @@ public class ZipArchive extends Thread {
 	}
 	
 	public void run() {
-		System.out.println("TO ZIP: " + file.getAbsolutePath());
+		buffer.put("TO ZIP: " + file.getAbsolutePath());
 		if(file.isDirectory()) {
 			archive = file.getAbsolutePath()+".zip";
 		} else if(file.isFile()) {
 			archive = getFileName(file.getAbsolutePath())+".zip";
 		} else {
-			System.out.println("NOT directory or file: " + file.getAbsolutePath());
+			buffer.put("NOT directory or file: " + file.getAbsolutePath());
 			return;
 		}
 		
@@ -65,9 +68,9 @@ public class ZipArchive extends Thread {
 			zip(file, zos, "");
 //			zip(file, zos, null);
 		}catch(Exception e) {
-			System.out.println("EXEPTION: " + e.getMessage());
+			buffer.put("EXEPTION: " + e.getMessage());
 			return;
 		}
-		System.out.println("ZIP-FILE: " + archive);
+		buffer.put("ZIP-FILE: " + archive);
 	}
 }
