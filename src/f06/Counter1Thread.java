@@ -10,6 +10,7 @@ public class Counter1Thread extends Thread {
     }
      
     // Testa med Counter1-incCounter a) utan synchronized b) med synchronized
+    /*
     public void run() {
     	int value;
     	System.out.println(getName() + " startar");
@@ -21,37 +22,40 @@ public class Counter1Thread extends Thread {
     		System.out.println(getName()+": "+value);
     	}
     }
+    */
     
       // testa med Counter1-incCounter utan synchronized
-//    public void run() {
-//    	int value;
-//    	System.out.println(getName() + " startar");
-//    	while (times-->0) {
-//    		try {
-//    			Thread.sleep(1000);
-//    		} catch (InterruptedException e) {}
-//    		synchronized(counter) {
-//    			value = counter.incCounter();
-//    		} 
-//    		System.out.println(getName()+": "+value);
-//    	}
-//    }
+    /*
+    public void run() {
+    	int value;
+    	System.out.println(getName() + " startar");
+    	while (times-->0) {
+    		try {
+    			Thread.sleep(1000);
+    		} catch (InterruptedException e) {}
+    		synchronized(counter) {
+    			value = counter.incCounter();
+    		} 
+    		System.out.println(getName()+": "+value);
+    	}
+    }
+    */
     
+     //testa med Counter1-incCounter utan synchronized
     
-    // testa med Counter1-incCounter utan synchronized
-//    public void run() {
-//    	int value;
-//        System.out.println(getName() + " startar");
-//        while (times-->0) {
-//            try {
-//                Thread.sleep(1000);
-//            } catch (InterruptedException e) {}
-//        	synchronized(counter) {
-//        	    value = counter.incCounter();
-//        	    System.out.println(getName()+": "+value);
-//        	}
-//        }
-//    }
+    public void run() {
+    	int value;
+        System.out.println(getName() + " startar");
+        while (times-->0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {}
+        	synchronized(counter) {
+        	    value = counter.incCounter();
+        	    System.out.println(getName()+": "+value);
+        	}
+        }
+    }
     
     public static void main(String[] args) {
 		Counter1 counter = new Counter1();
