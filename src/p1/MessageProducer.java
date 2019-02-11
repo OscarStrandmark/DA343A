@@ -7,6 +7,6 @@ public interface MessageProducer {
 	public Message nextMessage();
 	
 	default void info() {
-		System.out.println("times="+times()+", delay="+delay()+", size="+size()+"]");
+		System.out.println("times="+times()+", delay="+delay()+", size="+size());
 	}
 }

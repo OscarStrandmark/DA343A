@@ -1,6 +1,7 @@
 package p1;
 
 public class ArrayProducer implements MessageProducer {
+	
 	private Message[] messages;
 	private int delay = 0;
 	private int times = 0;
