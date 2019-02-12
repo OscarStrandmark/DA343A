@@ -13,8 +13,7 @@ public class Producer extends Thread {
 	/**
 	 * Skapar ett Producer objekt. När
 	 * 
-	 * @param prodBuffer    En {@link Buffer} med med typvariablen
-	 *                      {@link MessageProducer}
+	 * @param prodBuffer    En {@link Buffer} med med typvariablen {@link MessageProducer}
 	 * @param messageBuffer En {@link Buffer} med typvariablen {@link Message}
 	 */
 	public Producer(Buffer<MessageProducer> prodBuffer, Buffer<Message> messageBuffer) {
@@ -22,11 +21,14 @@ public class Producer extends Thread {
 		this.messageBuffer = messageBuffer;
 	}
 
+	//Ärver javadoc av Thread
 	@Override
 	public synchronized void start() {
 		super.start();
 	}
-
+	
+	//Ärver javadoc av Thread
+	@Override
 	public void run() {
 		while (!Thread.interrupted()) {
 			try {

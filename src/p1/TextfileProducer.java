@@ -6,6 +6,12 @@ import java.io.InputStreamReader;
 
 import javax.swing.ImageIcon;
 
+/**
+ * En klass som hämtar en textfil och läser dess innehåll för att skapa {@link Message} objekt.
+ * 
+ * 
+ * @author Oscar Strandmark
+ */
 public class TextfileProducer implements MessageProducer {
 
 	private int times = 0;
@@ -14,6 +20,24 @@ public class TextfileProducer implements MessageProducer {
 	private Message[] messages;
 	private int currentIndex = -1;
 
+	/**
+	 * Skapar ett objekt som läser av .txt filen vid <code>filename</code> och skapar {@link Message} objekt av det som läses från textfilen.
+	 * Formatet på filen lyder:<p>
+	 * 
+	 * a <br>
+	 * b <br>
+	 * c <br>
+	 * m1_text <br>
+	 * m1_img_filePath <br>
+	 * m2_text <br>
+	 * m2_img_filePath <br>
+	 * osv...<p>
+	 * 
+	 * a = Antalet gånger sekvensen ska upprepas<br>
+	 * b = Antal millisekunder var bild ska visas<br>
+	 * c = Antal meddelanden i sekvensen<p>
+	 * @param filename Sökväg till filen som skall användas
+	 */
 	public TextfileProducer(String filename)  {
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"))) {
 			times = Integer.parseInt(br.readLine());
@@ -35,17 +59,31 @@ public class TextfileProducer implements MessageProducer {
 		}
 	}
 
-
+	/**
+	 * Returnerar antalet millisekunder (ms) mellan var {@link Message}-objekt visas.
+	 * 
+	 * @return Returnerar antalet millisekunder (ms) mellan var {@link Message}-objekt visas.
+	 */
 	@Override
 	public int delay() {
 		return delay;
 	}
 
+	/**
+	 * Returnerar antal gånger {@link Message}-sekvensen skall visas.
+	 * 
+	 * @return Returnerar antal gånger {@link Message}-sekvensen skall visas.
+	 */
 	@Override
 	public int times() {
 		return times;
 	}
 
+	/**
+	 * Returnerar storleken på {@link Message}-sekvensen.
+	 * 
+	 * @return Returnerar storleken på {@link Message}-sekvensen.
+	 */
 	@Override
 	public int size() {
 		if(messages == null) {
@@ -55,6 +93,11 @@ public class TextfileProducer implements MessageProducer {
 		}
 	}
 
+	/**
+	 * Returnerar nästa {@link Message}-objekt i sekvensen.
+	 * 
+	 * @return Returnerar nästa {@link Message}-objekt i sekvensen.
+	 */
 	@Override
 	public Message nextMessage() {
 		if (size() == 0) {
