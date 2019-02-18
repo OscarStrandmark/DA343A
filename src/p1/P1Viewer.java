@@ -22,8 +22,8 @@ public class P1Viewer extends Viewer{
 
 		@Override
 		public void update(Observable o, Object arg) {
-			o.toString();
-			System.out.println("update");
+			//o.toString();
+			//System.out.println("update");
 			Message msg = (Message)arg;
 			sendMsg(msg);
 		}

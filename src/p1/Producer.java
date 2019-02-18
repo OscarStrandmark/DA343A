@@ -1,4 +1,4 @@
-package p1;
+	package p1;
 
 /**
  * Denna klass tar alla {@link Message}-objekt ur en {@link MessageProducer} och lägger in dem i en {@link Buffer}
