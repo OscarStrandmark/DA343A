@@ -12,4 +12,9 @@ public class Uppgift_3_Controller {
 		this.view = view;
 	}
 
+	public void calculate(int o1, int o2, String operand) {
+
+		System.out.println("asfdsdfgsdfrgdrfg");
+	}
+
 }

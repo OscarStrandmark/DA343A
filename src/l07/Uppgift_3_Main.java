@@ -1,5 +1,7 @@
 package l07;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 public class Uppgift_3_Main {
@@ -11,8 +13,8 @@ public class Uppgift_3_Main {
 		controller.setViewer(view);
 
 		JFrame window = new JFrame();
-		window.pack();
 		window.add(view);
+		window.setSize(new Dimension(330,200));
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
