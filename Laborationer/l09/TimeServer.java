@@ -7,8 +7,6 @@ import java.util.Date;
 public class TimeServer implements Runnable {
 
 	private Thread serverThread = new Thread(this);
-	private BufferedOutputStream bos;
-	private BufferedInputStream bis;
 
 	private int port;
 	

@@ -1,63 +1,46 @@
 package l08;
 
-import java.net.*;
-import java.nio.file.attribute.DosFileAttributes;
-import java.io.*;
+import java.io.IOException;
+
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class CalcController {
 
-	private Socket socket;
-	private String ip;
-	private int port;
-	private boolean connected = false;
-	
-	private DataInputStream dis;
-	private DataOutputStream dos;
+	private CalcClient client;
+	private CalcUI ui = new CalcUI(this);
 
-	public CalcController(String ip, int port) {
-		this.ip = ip;
-		this.port = port;
+	private void showCalcUI() {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				JFrame frame = new JFrame("Client");
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.add(ui);
+				frame.pack();
+				frame.setVisible(true);
+			}
+		});
 	}
 
-	private void connect() {
-		if (!connected) {
-			try {
-				socket = new Socket(ip, port);
-				dis = new DataInputStream(socket.getInputStream());
-				dos = new DataOutputStream(socket.getOutputStream());
-				new Listener().start();
-				connected = true;
-			} catch (Exception e) {
-				System.out.println(e);
-			}
-		}
-	}
-	
-	private void disconnect() {
-		if(connected) {
-			try {
-				socket.close();
-			} catch (Exception e) {
-				connected = false;
-			}
-		}
+	public CalcController(CalcClient client) {
+		this.client = client;
+		client.setCalcController(this);
+		showCalcUI();
 	}
 
 	public void newCalculation(String nbr1, String nbr2, String operation) {
-		if(connected) {
-			try {
-				dos.writeUTF(nbr1 + "," + nbr2 + "," + operation);
-				dos.close();
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
+		try {
+			client.newCalculation(nbr1 + "," + nbr2 + "," + operation);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
-	
-	private class Listener extends Thread {
-		public void run() {
-			String answer;
-			
-		}
+
+	public void newResponse(final String response) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				ui.setResult(response);
+			}
+		});
 	}
 }
