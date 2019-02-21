@@ -16,8 +16,8 @@ public class Time {
 
 	private class ReadTime extends Thread {
 		public void run() {
-			try( Socket socket = new Socket("time.nist.gov", 13);
-//			try( Socket socket = new Socket("localhost", 13); // Laboration 9
+//			try( Socket socket = new Socket("time.nist.gov", 13);
+			try( Socket socket = new Socket("localhost", 13); // Laboration 9
 					InputStreamReader isr = new InputStreamReader(socket.getInputStream(),"UTF-8");
 					BufferedReader br = new BufferedReader(isr) ) {
 				System.out.println(socket);
