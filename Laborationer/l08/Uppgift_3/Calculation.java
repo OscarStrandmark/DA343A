@@ -1,4 +1,4 @@
-package l08;
+package l08.Uppgift_3;
 
 import java.io.Serializable;
 

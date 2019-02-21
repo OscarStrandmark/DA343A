@@ -1,4 +1,4 @@
-package l08;
+package l08.Uppgift_2;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

@@ -1,4 +1,4 @@
-package l08;
+package l08.Uppgift_3;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
