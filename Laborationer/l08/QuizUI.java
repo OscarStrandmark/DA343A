@@ -200,6 +200,6 @@ public class QuizUI extends JPanel {
 				frame.setVisible(true);
 			}
 		});
-		JOptionPane.showMessageDialog(null, new QuizUI(null));
+		//JOptionPane.showMessageDialog(null, new QuizUI(null));
 	}
 }
