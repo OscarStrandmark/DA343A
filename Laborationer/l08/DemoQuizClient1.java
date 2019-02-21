@@ -21,7 +21,7 @@ public class DemoQuizClient1 {
 		try(Socket socket = new Socket(ip,port);
 				DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 				DataInputStream dis = new DataInputStream(socket.getInputStream()) ) {
-			System.out.println("\n"+dis.readUTF()); // v√§lkommen
+			System.out.println("\n"+dis.readUTF()); // v‰lkommen
 			dos.writeUTF(parts[0]);
 			dos.writeInt(Integer.parseInt(parts[1]));
 			dos.flush();
@@ -38,7 +38,7 @@ public class DemoQuizClient1 {
 		try(Socket socket = new Socket(ip,port);
 				DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
 				DataInputStream dis = new DataInputStream(socket.getInputStream()) ) {
-			System.out.println(dis.readUTF()); // v√§lkommen
+			System.out.println(dis.readUTF()); // v‰lkommen
 			dos.writeUTF(parts[0]);
 			dos.writeInt(Integer.parseInt(parts[1]));
 			dos.writeInt(Integer.parseInt(parts[2]));
@@ -57,8 +57,8 @@ public class DemoQuizClient1 {
 			String request="";
 			while(true) {
 				try {
-					request = JOptionPane.showInputDialog("Ange request p√• formen:\n  * 'QUESTION,Fr√•gaNr'\n  * 'ANSWER,Fr√•gaNr,√Örtal'"+
-				                                          "\nFr√•gaNr ska vara 1-20\n√Örtal ska vara fyra siffror\n");
+					request = JOptionPane.showInputDialog("Ange request pÂ formen:\n  * 'QUESTION,FrÂgaNr'\n  * 'ANSWER,FrÂgaNr,Ârtal'"+
+				                                          "\nFrÂgaNr ska vara 1-20\nÂrtal ska vara fyra siffror\n");
 					if(request==null)
 						break;
 					String[] parts = request.split(",");

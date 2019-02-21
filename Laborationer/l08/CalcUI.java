@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class CalcUI extends JPanel implements ActionListener {
-    private JButton btnCalculate = new JButton("Ber√§kna");
+    private JButton btnCalculate = new JButton("Ber‰kna");
     private JLabel lblTitle = new JLabel("Inmatning av matematiska uttryck");
     private JTextArea taResult = new JTextArea(""); 
     private JLabel lblOp1 = new JLabel("Operand 1:");
@@ -90,7 +90,7 @@ public class CalcUI extends JPanel implements ActionListener {
     }
 
     public static void main(String[] args) {
-    	CalcUI ui = new CalcUI(null);
+    	CalcUI ui = new CalcUI(new CalcController("195.178.227.53",721));
     	ui.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     	JOptionPane.showMessageDialog( null, ui );
     }
