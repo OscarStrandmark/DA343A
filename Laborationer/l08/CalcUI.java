@@ -88,10 +88,4 @@ public class CalcUI extends JPanel implements ActionListener {
     public void setResult(String result) {
     	taResult.setText(result);
     }
-
-    public static void main(String[] args) {
-    	CalcUI ui = new CalcUI(new CalcController("195.178.227.53",721));
-    	ui.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-    	JOptionPane.showMessageDialog( null, ui );
-    }
 }
