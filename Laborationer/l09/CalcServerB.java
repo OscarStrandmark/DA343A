@@ -31,7 +31,7 @@ public class CalcServerB implements Runnable {
 				Socket socket = servSocket.accept();
 				new ClientHandler(socket).start();
 			} catch (Exception e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 	}
@@ -45,17 +45,22 @@ public class CalcServerB implements Runnable {
 		}
 
 		public void run() {
-			
+			String request, response;
+			String[] parts;
+			double nbr1,nbr2,answer;
+			char op;
 			try(DataInputStream dis = new DataInputStream(socket.getInputStream());
 				DataOutputStream dos = new DataOutputStream(socket.getOutputStream());){
 				while(true) {
-					double nbr1 = dis.readDouble();
-					double nbr2 = dis.readDouble();
-					char op = dis.readChar();
-					double answer = calculator.calculator(nbr1, nbr2, op);
-					String response = answer + "\n" + nbr1 + op + nbr2 + "=" + answer;
+					request = dis.readUTF();
+					parts = request.split(",");
+					nbr1 = Double.parseDouble(parts[0]);
+					nbr2 = Double.parseDouble(parts[1]);
+					op = parts[2].charAt(0);
+					answer = calculator.calculator(nbr1, nbr2, op);
+					
+					response = answer + "\n" + nbr1 + op + nbr2 + "=" + answer;
 					dos.writeUTF(response);
-					dos.flush();
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -65,8 +70,6 @@ public class CalcServerB implements Runnable {
 			} catch (Exception e) {
 				System.out.println("Klient nerkopplad");
 			}
-			
 		}
 	}
-	
 }
