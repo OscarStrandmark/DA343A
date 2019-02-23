@@ -45,7 +45,7 @@ public class MainP2 {
         MessageProducerServer mpServer = new MessageProducerServer(mpInput,3343);
         mpServer.startServer();
         MessageProducerClient mpClient1 = new MessageProducerClient("127.0.0.1",3343);
-        mpClient1.send(TestP1input.getArrayProducer(10,100));
+        mpClient1.send(TestP2Input.getArrayProducer(10,100));
         mpClient1.send(new ShowGubbe(5000));
         mpClient1.send(new TextfileProducer("files/new.txt"));
 	}
