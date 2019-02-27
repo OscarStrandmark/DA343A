@@ -1,34 +1,30 @@
-package l07.Lösningar_uppgift_4.udpclient;
+package l07.Lsningar_uppgift_4.udpserver;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class UDPClient {
+public class UDPServer {
 	private DatagramSocket socket;
-	private InetAddress address;
-	private int serverPort;
-	private ServerListener serverListener;
+	private ClientListener clientListener;
 	private Thread listener = new Thread(new UDPListener());
 	
-	public UDPClient(String ipAddress, int port, ServerListener serverListener) {
-		this.serverPort = port;
-		this.serverListener = serverListener;
+	public UDPServer(int requestPort, ClientListener clientListener) {
+		this.clientListener = clientListener;
 		try {
-			this.address = InetAddress.getByName(ipAddress);
-			this.socket = new DatagramSocket();  // ledig port
-			this.listener.start();
+			socket = new DatagramSocket(requestPort); 
+			listener.start();
 		} catch(Exception e) { 
 			System.err.println(e);
 		}
 	}
 
-	public void send(String str) {
+	public void send(InetAddress address, int clientPort, String str) {
 		if(socket!=null) {
 			byte[] data = str.getBytes();
-			DatagramPacket packet = new DatagramPacket(data,data.length,address,serverPort);
 			try {
+				DatagramPacket packet = new DatagramPacket(data,data.length,address,clientPort);
 				socket.send(packet);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -44,9 +40,9 @@ public class UDPClient {
 				try {
 					packet = new DatagramPacket(readBuffer,readBuffer.length);
 					socket.receive(packet);		
-					serverListener.receive(new String(packet.getData(),0,packet.getLength()));
+					clientListener.receive(new String(packet.getData(),0,packet.getLength()), packet.getAddress(),packet.getPort());
 				} catch(Exception e) { 
-					break; 
+					break;
 				}
 			}
 			socket.close();
