@@ -1,4 +1,4 @@
-package l07.Lösningar_uppgift_4.udpclient;
+package l07.Lsningar_uppgift_4.udpclient;
 
 import javax.swing.SwingUtilities;
 
