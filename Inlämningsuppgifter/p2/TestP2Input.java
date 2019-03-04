@@ -40,16 +40,18 @@ public class TestP2Input {
 	}
 	
     public static ArrayProducer getArrayProducer(int times, int delay) {
-    	Message[] messages = { new Message("UP",new ImageIcon("images/new1.jpg")),
-    			new Message("Going down.",new ImageIcon("images/new2.jpg")),
-    			new Message("Going down..",new ImageIcon("images/new3.jpg")),
-    			new Message("Going down...",new ImageIcon("images/new4.jpg")),
-    			new Message("Going down....",new ImageIcon("images/new5.jpg")),
-    			new Message("Almost down",new ImageIcon("images/new6.jpg")),
-    			new Message("DOWN",new ImageIcon("images/new7.jpg")),
-    			new Message("Going up.",new ImageIcon("images/new8.jpg")),
-    			new Message("Going up..",new ImageIcon("images/new9.jpg")),
-    			new Message("Almost up",new ImageIcon("images/new10.jpg")) };
+    	
+    	Message[] messages = { new Message("UP",new ImageIcon("C:\\dev\\images\\new1.jpg")),
+    			new Message("Going down.",new ImageIcon("C:\\dev\\images\\new2.jpg")),
+    			new Message("Going down..",new ImageIcon("C:\\dev\\images\\new3.jpg")),
+    			new Message("Going down...",new ImageIcon("C:\\dev\\images\\new4.jpg")),
+    			new Message("Going down....",new ImageIcon("C:\\dev\\images\\new5.jpg")),
+    			new Message("Almost down",new ImageIcon("C:\\dev\\images\\new6.jpg")),
+    			new Message("DOWN",new ImageIcon("C:\\dev\\images\\new7.jpg")),
+    			new Message("Going up.",new ImageIcon("C:\\dev\\images\\new8.jpg")),
+    			new Message("Going up..",new ImageIcon("C:\\dev\\images\\new9.jpg")),
+    			new Message("Almost up",new ImageIcon("C:\\dev\\images\\new10.jpg")) };
+    			
         return new ArrayProducer(messages,times,delay);       
     }
 }

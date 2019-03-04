@@ -2,12 +2,7 @@ package p2;
 
 public class MessageClient {
 
-	public MessageClient(String string, int port) {
-		
+	public MessageClient(String string, int i) {
 	}
 
-	private class ServerListener extends Thread {
-		
-		
-	}
 }
