@@ -47,7 +47,7 @@ public class MainP2 {
         MessageProducerClient mpClient1 = new MessageProducerClient("127.0.0.1",3343);
         mpClient1.send(TestP2Input.getArrayProducer(10,100));
         mpClient1.send(new ShowGubbe(5000));
-        mpClient1.send(new TextfileProducer("C:\\Users\\oscar\\git\\DA343A\\Inlämningsuppgifter\\files\\new.txt"));
+        mpClient1.send(new TextfileProducer("C:\\dev\\files\\new.txt"));
 	}
 }
 
@@ -75,6 +75,6 @@ class ShowGubbe implements MessageProducer {
 
 	@Override
 	public Message nextMessage() {
-		return new Message("Hi folks...",new ImageIcon("C:\\Users\\oscar\\git\\DA343A\\Inlämningsuppgifter\\images\\gubbe.jpg"));
+		return new Message("Hi folks...",new ImageIcon("C:\\dev\\images\\gubbe.jpg"));
 	}	
 }

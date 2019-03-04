@@ -34,7 +34,8 @@ public class MessageProducerServer {
 			try (ServerSocket servSocket = new ServerSocket(port)) {
 				System.out.println("MessageProducerServer started");
 				while (true) {
-					try (Socket socket = servSocket.accept()){
+					try {
+						Socket socket = servSocket.accept();
 						ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 						ArrayProducer ap = (ArrayProducer) ois.readObject();
 						MPI.addMessageProducer(ap);

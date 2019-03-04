@@ -2,22 +2,22 @@
 200
 10
 UP and
-src\p1\images\new1.jpg
+C:\dev\C:\dev\images\new1.jpg
 and...
-src\p1\images\new2.jpg
+C:\dev\C:\dev\images\new2.jpg
  and...
-src\p1\images\new3.jpg
+C:\dev\images\new3.jpg
  and...
-src\p1\images\new4.jpg
+C:\dev\images\new4.jpg
  and...
-src\p1\images\new5.jpg
+C:\dev\images\new5.jpg
  and...
-src\p1\images\new6.jpg
+C:\dev\images\new6.jpg
  DOWN and
-src\p1\images\new7.jpg
+C:\dev\images\new7.jpg
  and...
-src\p1\images\new8.jpg
+C:\dev\images\new8.jpg
  and...
-src\p1\images\new9.jpg
+C:\dev\images\new9.jpg
 and...
-src\p1\images\new10.jpg
+C:\dev\images\new10.jpg
