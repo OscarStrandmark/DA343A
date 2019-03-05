@@ -14,16 +14,32 @@ public class MessageClient {
 	
 	private ArrayList<CallbackInterface> callbackList;
 	
+	/**
+	 * Creates a MessageClient that recieves {@link Message} objects from a server and sends them to listening classes.
+	 * 
+	 * @param address The address to the server.
+	 * @param port The port the server is listening on.
+	 */
 	public MessageClient(String address, int port) {
 		new Connection(address, port);
 		callbackList = new ArrayList<CallbackInterface>();
 		messageBuffer = new Buffer<Message>();
 	}
 
+	/**
+	 * Adds the parameter object as a listener to this class.
+	 * 
+	 * @param ci Object of a class that implements the interface {@link CallbackInterface}
+	 */
 	public void addListener(CallbackInterface ci) {
 		callbackList.add(ci);
 	}
 
+	/**
+	 * Private method used by the Connection thread to send the recieved message to all listeners.
+	 * 
+	 * @param msg The message to send to the listeners.
+	 */
 	private void sendList(Message msg) {
 		Iterator<CallbackInterface> iter = callbackList.iterator();
 		while(iter.hasNext()) {
@@ -31,6 +47,11 @@ public class MessageClient {
 		}
 	}
 	
+	/**
+	 * Private class that handles recieving messages from the server which the client is connected to.
+	 * 
+	 * @author Oscar Strandmark
+	 */
 	private class Connection extends Thread {
 
 		private String address;

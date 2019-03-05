@@ -20,6 +20,12 @@ public class MessageServer {
 	private ArrayList<ClientHandler> clients;
 	private Thread server;
 	
+	/**
+	 * Creates a MessageServer
+	 * 
+	 * @param messageManager the MessageManager which the server will recieve Messages from
+	 * @param port The port the server will run on
+	 */
 	public MessageServer(MessageManager messageManager, int port) {
 		this.mm = messageManager;
 		this.port = port;
@@ -28,13 +34,23 @@ public class MessageServer {
 		server = new Connection(port);
 	}
 
-	public void send2Clients(Message msg) {
+	/**
+	 * Used by the observer to transfer the Messages from the MessageManager to the Clients
+	 * 
+	 * @param msg
+	 */
+	private void send2Clients(Message msg) {
 		Iterator<ClientHandler> iter = clients.iterator();
 		while(iter.hasNext()) {
 			iter.next().put(msg);
 		}
 	}
 	
+	/**
+	 * Class that handles new incoming connections and creates a new Thread for each.
+	 * 
+	 * @author Oscar Strandmark
+	 */
 	private class Connection extends Thread {
 
 		private int port;
@@ -49,23 +65,24 @@ public class MessageServer {
 				System.out.println("MessageServer Started");
 				while(true) {
 					try {
-						System.out.println("server listening for connections");
 						Socket socket = serverSocket.accept();
 						ClientHandler client = new ClientHandler(socket);
 						clients.add(client);
-						System.out.println("Clients: " + clients.size());
 					} catch (Exception e) {
-						System.out.println("E1");
 						e.printStackTrace();
 					}
 				}
 			} catch (Exception e) {
-				System.out.println("E2");
 				e.printStackTrace();
 			}
 		}
 	}
 	
+	/**
+	 * Class that handles a connection and sends the messages to the Clients
+	 * 
+	 * @author Oscar Strandmark
+	 */
 	private class ClientHandler extends Thread {
 
 		private Socket socket;
