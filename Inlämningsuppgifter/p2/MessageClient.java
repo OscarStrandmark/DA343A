@@ -2,6 +2,8 @@ package p2;
 
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import p1.Buffer;
 import p1.Message;
@@ -10,15 +12,23 @@ public class MessageClient {
 
 	private Buffer<Message> messageBuffer;
 	
-	private CallbackInterface ci;
+	private ArrayList<CallbackInterface> callbackList;
 	
 	public MessageClient(String address, int port) {
 		new Connection(address, port);
+		callbackList = new ArrayList<CallbackInterface>();
 		messageBuffer = new Buffer<Message>();
 	}
 
 	public void addListener(CallbackInterface ci) {
-		this.ci = ci;
+		callbackList.add(ci);
+	}
+
+	private void sendList(Message msg) {
+		Iterator<CallbackInterface> iter = callbackList.iterator();
+		while(iter.hasNext()) {
+			iter.next().getMessage(msg);
+		}
 	}
 	
 	private class Connection extends Thread {
@@ -39,7 +49,7 @@ public class MessageClient {
 					try {
 						Message msg = (Message)ois.readObject();
 						messageBuffer.put(msg);
-						ci.getMessage(msg);
+						sendList(msg);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

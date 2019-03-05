@@ -38,6 +38,7 @@ public class MessageProducerClient {
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 			ArrayProducer obj = ap;
 			oos.writeObject(obj);
+			Thread.sleep(500);
 			oos.flush();
 			oos.close();
 			socket.close();

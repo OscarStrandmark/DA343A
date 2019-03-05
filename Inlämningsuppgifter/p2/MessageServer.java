@@ -49,14 +49,18 @@ public class MessageServer {
 				System.out.println("MessageServer Started");
 				while(true) {
 					try {
+						System.out.println("server listening for connections");
 						Socket socket = serverSocket.accept();
 						ClientHandler client = new ClientHandler(socket);
 						clients.add(client);
+						System.out.println("Clients: " + clients.size());
 					} catch (Exception e) {
+						System.out.println("E1");
 						e.printStackTrace();
 					}
 				}
 			} catch (Exception e) {
+				System.out.println("E2");
 				e.printStackTrace();
 			}
 		}
@@ -79,7 +83,8 @@ public class MessageServer {
 		}
 		
 		public void run() {
-			try (ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream())){
+			try {
+				ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 				while(true) {
 					try {
 						Message msg = messageBuffer.get();
