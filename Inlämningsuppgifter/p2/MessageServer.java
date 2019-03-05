@@ -11,7 +11,11 @@ import java.util.Observer;
 import p1.Buffer;
 import p1.Message;
 import p1.MessageManager;
-
+/**
+ * Class that recieves {@link Message} objects from the {@link MessageManager} and sends them to {@link MessageClient}-objects via TCP.
+ * 
+ * @author Oscar Strandmark
+ */
 public class MessageServer {
 
 	private MessageManager mm;

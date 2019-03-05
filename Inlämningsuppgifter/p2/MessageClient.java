@@ -8,6 +8,11 @@ import java.util.Iterator;
 import p1.Buffer;
 import p1.Message;
 
+/**
+ * Client class that recieves {@link Message} object from the {@link MessageServer} and sends them to listening classes.
+ * 
+ * @author Oscar Strandmark
+ */
 public class MessageClient {
 
 	private Buffer<Message> messageBuffer;
